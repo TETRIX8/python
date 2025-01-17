@@ -1,6 +1,20 @@
 import { CodeBlock } from "@/components/CodeBlock";
+import { QuizQuestion } from "@/components/QuizQuestion";
+import { CodeQuestion } from "@/components/CodeQuestion";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Variables = () => {
+  const [score, setScore] = useState(0);
+  const [questionsAnswered, setQuestionsAnswered] = useState(0);
+  const navigate = useNavigate();
+
+  const handleAnswer = (isCorrect: boolean) => {
+    if (isCorrect) setScore(prev => prev + 1);
+    setQuestionsAnswered(prev => prev + 1);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -204,6 +218,95 @@ print(f"К оплате: {общая_стоимость} рублей")`}
               </div>
             </div>
           </div>
+        </section>
+
+        <section className="mt-12 mb-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8 animate-fade-up">
+            Проверь свои знания
+          </h2>
+
+          <div className="space-y-6">
+            <QuizQuestion
+              question="Какой символ используется для создания комментария в одну строку в Python?"
+              options={["#", "//", "/*", "--"]}
+              correctAnswer="#"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Как правильно назвать переменную в Python?"
+              options={["1name", "my-name", "my_name", "my name"]}
+              correctAnswer="my_name"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Какое из этих имен переменных недопустимо в Python?"
+              options={["user_age", "userAge", "for", "age_1"]}
+              correctAnswer="for"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Какой стиль именования рекомендуется использовать в Python?"
+              options={["camelCase", "snake_case", "PascalCase", "kebab-case"]}
+              correctAnswer="snake_case"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Что выведет следующий код: x = 5; y = x; x = 10; print(y)?"
+              options={["5", "10", "None", "Ошибка"]}
+              correctAnswer="5"
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте переменную name и присвойте ей значение 'Python'"
+              correctAnswer="name = 'Python'"
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте переменную age и присвойте ей значение 25"
+              correctAnswer="age = 25"
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте переменную is_student и присвойте ей значение True"
+              correctAnswer="is_student = True"
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте переменную price со значением 99.99"
+              correctAnswer="price = 99.99"
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте переменную user_name со значением 'Alice'"
+              correctAnswer="user_name = 'Alice'"
+              onAnswer={handleAnswer}
+            />
+          </div>
+
+          {questionsAnswered === 10 && (
+            <div className="mt-8 p-6 bg-white rounded-lg shadow-sm text-center animate-fade-up">
+              <h3 className="text-2xl font-bold mb-4">
+                Ваш результат: {score} из 10
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {score === 10 ? "Отлично! Вы отлично разбираетесь в переменных!" :
+                 score >= 7 ? "Хороший результат! Продолжайте практиковаться!" :
+                 "Попробуйте еще раз после повторения материала!"}
+              </p>
+              <Button onClick={() => navigate("/topics")} className="mt-4">
+                Вернуться к темам
+              </Button>
+            </div>
+          )}
         </section>
       </div>
     </div>
