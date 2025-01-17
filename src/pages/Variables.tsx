@@ -2,18 +2,55 @@ import { CodeBlock } from "@/components/CodeBlock";
 import { QuizQuestion } from "@/components/QuizQuestion";
 import { CodeQuestion } from "@/components/CodeQuestion";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { Progress } from "@/components/ui/progress";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Variables = () => {
   const [score, setScore] = useState(0);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prev + 4;
+      });
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleAnswer = (isCorrect: boolean) => {
     if (isCorrect) setScore(prev => prev + 1);
     setQuestionsAnswered(prev => prev + 1);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-gray-50">
+        <h1 className="text-4xl font-bold text-primary animate-fade-in">
+          Программирование
+        </h1>
+        <div className="w-64">
+          <Progress value={progress} className="animate-fade-in" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
