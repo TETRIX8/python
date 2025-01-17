@@ -12,10 +12,17 @@ export const CodeQuestion = ({ question, correctAnswer, onAnswer }: CodeQuestion
   const [answer, setAnswer] = useState("");
   const [hasAnswered, setHasAnswered] = useState(false);
 
+  const normalizeCode = (code: string) => {
+    // Remove all whitespace around = operator and trim the string
+    return code.replace(/\s*=\s*/g, '=').trim();
+  };
+
   const handleSubmit = () => {
     if (!hasAnswered) {
       setHasAnswered(true);
-      onAnswer(answer.trim() === correctAnswer.trim());
+      const normalizedAnswer = normalizeCode(answer);
+      const normalizedCorrect = normalizeCode(correctAnswer);
+      onAnswer(normalizedAnswer === normalizedCorrect);
     }
   };
 
@@ -38,8 +45,8 @@ export const CodeQuestion = ({ question, correctAnswer, onAnswer }: CodeQuestion
           Проверить
         </Button>
         {hasAnswered && (
-          <p className={`text-sm ${answer.trim() === correctAnswer.trim() ? 'text-green-600' : 'text-red-600'}`}>
-            {answer.trim() === correctAnswer.trim() ? 'Правильно!' : `Неправильно. Правильный ответ: ${correctAnswer}`}
+          <p className={`text-sm ${normalizeCode(answer) === normalizeCode(correctAnswer) ? 'text-green-600' : 'text-red-600'}`}>
+            {normalizeCode(answer) === normalizeCode(correctAnswer) ? 'Правильно!' : `Неправильно. Правильный ответ: ${correctAnswer}`}
           </p>
         )}
       </div>
