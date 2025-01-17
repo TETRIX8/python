@@ -16,7 +16,7 @@ const Variables = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 5000); // Changed to 5000ms (5 seconds)
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -24,7 +24,7 @@ const Variables = () => {
           clearInterval(interval);
           return 100;
         }
-        return prev + 4;
+        return prev + 2; // Adjusted to make progress smoother over 5 seconds
       });
     }, 50);
 
@@ -41,8 +41,8 @@ const Variables = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-gray-50">
-        <h1 className="text-4xl font-bold text-primary animate-fade-in">
+      <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-gray-900">
+        <h1 className="text-4xl font-bold text-white animate-fade-in">
           Программирование
         </h1>
         <div className="w-64">
