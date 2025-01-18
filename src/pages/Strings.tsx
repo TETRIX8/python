@@ -65,8 +65,8 @@ const Strings = () => {
               Что такое строки?
             </h2>
             <p className="text-gray-700 mb-4">
-              Строки в Python — эпоследовательности символов, заключённые в кавычки. 
-              Они могут быть одинарными (') или двойными (").
+              Строки в Python — это последовательности символов, которые можно использовать для хранения и работы с текстовыми данными. 
+              Они заключаются в одинарные (') или двойные (") кавычки. Это делает строки удобными для работы с текстом любого типа — от простых предложений до сложных форматов.
             </p>
 
             <CodeBlock 
@@ -83,7 +83,8 @@ print(foodForDinosaurus)`}
               Длинные строки (многострочный текст)
             </h2>
             <p className="text-gray-700 mb-4">
-              Если строка слишком длинная, её можно разделить на несколько строк, используя тройные кавычки.
+              Иногда текст слишком длинный, чтобы писать его в одной строке. В таких случаях используют тройные кавычки (''' или """).
+              Это позволяет записывать многострочные строки, которые удобно читать и редактировать.
             </p>
 
             <CodeBlock 
@@ -98,13 +99,18 @@ print(food)`}
             <h2 className="text-2xl font-semibold text-primary mb-4">
               Специальные символы внутри строк
             </h2>
-            
-            <CodeBlock 
-              code={`# \\n - перенос на следующую строку
-print("aaa \\n bbb")
+            <p className="text-gray-700 mb-4">
+              Внутри строк можно использовать специальные символы, которые дают дополнительные возможности:
+              \n — перенос строки, \t — табуляция, и многие другие.
+              Эти символы начинаются с обратного слэша (\), чтобы Python понимал, что это не обычный текст.
+            </p>
 
-# \\t - табуляция (4 пробела)
-print("aaa \\t bbb")`}
+            <CodeBlock 
+              code={`# \n - перенос на следующую строку
+print("aaa \n bbb")
+
+# \t - табуляция (4 пробела)
+print("aaa \t bbb")`}
             />
           </div>
 
@@ -112,7 +118,11 @@ print("aaa \\t bbb")`}
             <h2 className="text-2xl font-semibold text-primary mb-4">
               Форматирование строк
             </h2>
-            
+            <p className="text-gray-700 mb-4">
+              Форматирование позволяет включать значения переменных в строки. 
+              Вы можете использовать старый метод с оператором %, метод format() или современные f-строки, которые наиболее удобны.
+            </p>
+
             <CodeBlock 
               code={`name = "Александр"
 old = 22
@@ -129,7 +139,11 @@ print(f"Привет, {name}! Тебе {old} лет.")`}
             <h2 className="text-2xl font-semibold text-primary mb-4">
               Срезы строк
             </h2>
-            
+            <p className="text-gray-700 mb-4">
+              Срезы дают возможность извлекать части строки. Вы задаете начальный индекс, конечный индекс и шаг.
+              Это мощный инструмент для обработки текстов и анализа данных.
+            </p>
+
             <CodeBlock 
               code={`myString = "kiberOne"
 print(myString[3:6])    # Символы с 3 по 5: 'erO'
@@ -137,52 +151,7 @@ print(myString[1:9:2])  # Каждый второй символ с 1 по 8: 'i
 print(myString[::-1])   # Строка в обратном порядке: 'enOrebik'`}
             />
           </div>
-
-          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
-            <h2 className="text-2xl font-semibold text-primary mb-4">
-              Сложные примеры срезов
-            </h2>
-            
-            <CodeBlock 
-              code={`# Пример 1: Нечётные индексы в обратном порядке
-string = "Программирование"
-print(string[1::2][::-1])  # Результат: einnaorP
-
-# Пример 2: Удаление последних символов и дублирование
-string = "PythonDeveloper"
-trimmed = string[:-3]
-print(trimmed * 2)  # Результат: PythonDevePythonDeve
-
-# Пример 3: Форматирование строк
-name = "Иван"
-age = 30
-profession = "программист"
-print(f"Привет, {name}! Тебе {age} лет, и ты {profession}.")`}
-            />
-          </div>
-
-          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
-            <h2 className="text-2xl font-semibold text-primary mb-4">
-              Практические задания
-            </h2>
-            
-            <CodeBlock 
-              code={`# Задание 1: Анализ строки
-inputString = "Моя строка"
-print(inputString[2])      # Третий символ: 'я'
-print(inputString[-2])     # Предпоследний символ: 'к'
-print(inputString[:5])     # Первые пять символов: 'Моя с'
-
-# Задание 2: Разделение строки
-myString = "Режем строки"
-mid = len(myString) // 2
-firstPart = myString[:mid]
-secondPart = myString[mid:]
-print(secondPart + firstPart)  # Результат: строкиРежем`}
-            />
-          </div>
         </section>
-
         <section className="mt-12 mb-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8 animate-fade-up">
             Проверь свои знания
