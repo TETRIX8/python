@@ -16,7 +16,7 @@ const Strings = () => {
 
   useEffect(() => {
     const currentDate = new Date();
-    const accessDate = new Date(2025, 0, 15); // January 20, 2025
+    const accessDate = new Date(2025, 0, 20); // January 20, 2025
 
     if (currentDate >= accessDate) {
       setIsAccessGranted(true);
@@ -249,8 +249,8 @@ print(myString[2])  # Выводит: b`}
           <div className="space-y-6">
             <QuizQuestion
               question="Какой символ используется для переноса строки в Python?"
-              options={["\\n", "\\t", "\\r", "\\s"]}
-              correctAnswer="\\n"
+              options={["n", "t", "r", "s"]}
+              correctAnswer="n"
               onAnswer={handleAnswer}
             />
 
@@ -282,8 +282,8 @@ print(myString[2])  # Выводит: b`}
 
             <QuizQuestion
               question="Какой символ используется для табуляции в строке?"
-              options={["\\t", "\\n", "\\r", "\\s"]}
-              correctAnswer="\\t"
+              options={["t", "n", "r", "s"]}
+              correctAnswer="t"
               onAnswer={handleAnswer}
             />
 
