@@ -43,7 +43,7 @@ const Strings = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-gray-900">
         <h1 className="text-4xl font-bold text-white animate-fade-in">
-          Строки
+          Строкии
         </h1>
         <div className="w-64">
           <Progress value={progress} className="animate-fade-in" />
