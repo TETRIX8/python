@@ -170,35 +170,6 @@ print(myString[::-1])   # Строка в обратном порядке: 'enOr
             />
           </div>
         </section>
-
-        <section className="mt-12 mb-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8 animate-fade-up">
-            Проверь свои знания
-          </h2>
-
-          <div className="space-y-6">
-            <QuizQuestion
-              question="Какой символ используется для переноса строки в Python?"
-              options={["\\n", "\\t", "\\r", "\\s"]}
-              correctAnswer="\\n"
-              onAnswer={handleAnswer}
-            />
-
-            <QuizQuestion
-              question="Как создать многострочную строку в Python?"
-              options={[
-                "Использовать тройные кавычки '''",
-                "Использовать двойные кавычки \"\"",
-                "Использовать одинарные кавычки ''",
-                "Использовать символ \\n"
-              ]}
-              correctAnswer="Использовать тройные кавычки '''"
-              onAnswer={handleAnswer}
-            />
-
-            {/* Остальные тестовые вопросы остаются неизменными */}
-          </div>
-        </section>
         <section className="mt-12 mb-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8 animate-fade-up">
             Проверь свои знания
