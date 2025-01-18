@@ -169,6 +169,59 @@ print(myString[1:9:2])  # Каждый второй символ с 1 по 8: 'i
 print(myString[::-1])   # Строка в обратном порядке: 'enOrebik'`}
             />
           </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Экранирование символов
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Предположим, нам потребовалось вывести в консоль предложение с прямой речью, например такое:
+            </p>
+
+            <CodeBlock 
+              code={`# Ошибка из-за одиночной кавычки
+print('"Тут что-то не так, не будь я Д'Артаньян" - подумал он.')`}
+            />
+
+            <p className="text-gray-700 mb-4">
+              Просто так мы не можем ее ввести, потому что у в середине предложения есть одиночная кавычка. Python думает, что строка (тип данных), заканчивается на этой строке, а дальше он не может определить что написано. В таких случаях используют экранирование:
+            </p>
+
+            <CodeBlock 
+              code={`# Правильный способ с экранированием
+print('"Тут что-то не так, не будь я Д\'Артаньян" - подумал он.')`}
+            />
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Обращение к символам строки по индексу
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Мы можем обратиться к определенному символу строки, указав его индекс в квадратных скобках. Например:
+            </p>
+
+            <CodeBlock 
+              code={`myString = "kiberOne"
+
+print(myString[2])  # Выводит: b`}
+            />
+
+            <p className="text-gray-700 mb-4">
+              Как можно заметить, символы в строке нумеруются с нуля:
+            </p>
+
+            <ul className="list-disc pl-6 text-gray-700 mb-4">
+              <li>k - [0]</li>
+              <li>i - [1]</li>
+              <li>b - [2]</li>
+              <li>...</li>
+            </ul>
+
+            <CodeBlock 
+              code={`print(myString[0])  # Выводит: k`}
+            />
+          </div>
         </section>
         <section className="mt-12 mb-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8 animate-fade-up">
