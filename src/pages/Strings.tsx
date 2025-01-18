@@ -56,38 +56,38 @@ const Strings = () => {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-12 animate-fade-up">
-          Строки в Python: основы работы
+          Работа со строками в Python
         </h1>
-        
+
         <section className="prose lg:prose-xl mx-auto">
           <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
             <h2 className="text-2xl font-semibold text-primary mb-4">
               Что такое строки?
             </h2>
             <p className="text-gray-700 mb-4">
-              Строка — это последовательность символов, заключенная в кавычки.
+              Строки в Python — это последовательности символов, заключённые в кавычки. 
+              Они могут быть одинарными (') или двойными (").
             </p>
-            
+
             <CodeBlock 
               code={`foodForChildren = "В школе KiberOne ученики едят на полдник бананы"
 foodForDinosaurus = 'А что едят на полдник динозавры?'
 
 print(foodForChildren)
 print(foodForDinosaurus)`}
-              description="Пример создания и вывода строк"
             />
           </div>
 
           <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
             <h2 className="text-2xl font-semibold text-primary mb-4">
-              Многострочные строки
+              Длинные строки (многострочный текст)
             </h2>
             <p className="text-gray-700 mb-4">
-              Для создания многострочных строк используются тройные кавычки.
+              Если строка слишком длинная, её можно разделить на несколько строк, используя тройные кавычки.
             </p>
-            
+
             <CodeBlock 
-              code={`food = '''В школе KiberOne ученики едят на полник бананы
+              code={`food = '''В школе KiberOne ученики едят на полдник бананы
 А что едят на полдник динозавры?'''
 
 print(food)`}
@@ -96,11 +96,8 @@ print(food)`}
 
           <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
             <h2 className="text-2xl font-semibold text-primary mb-4">
-              Специальные символы
+              Специальные символы внутри строк
             </h2>
-            <p className="text-gray-700 mb-4">
-              В Python есть специальные символы для форматирования текста:
-            </p>
             
             <CodeBlock 
               code={`# \\n - перенос на следующую строку
@@ -113,12 +110,18 @@ print("aaa \\t bbb")`}
 
           <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
             <h2 className="text-2xl font-semibold text-primary mb-4">
-              Экранирование символов
+              Форматирование строк
             </h2>
             
             <CodeBlock 
-              code={`print('"Тут что-то не так, не будь я Д\\'Артаньян" - подумал он.')`}
-              description="Использование обратного слеша для экранирования символов"
+              code={`name = "Александр"
+old = 22
+grade = 4.5
+
+print("Мое имя %s, мне %d, и мой средний балл %.2f" % (name, old, grade))
+
+# Современный способ (f-строки)
+print(f"Привет, {name}! Тебе {old} лет.")`}
             />
           </div>
         </section>
@@ -131,8 +134,8 @@ print("aaa \\t bbb")`}
           <div className="space-y-6">
             <QuizQuestion
               question="Какой символ используется для переноса строки в Python?"
-              options={["\n", "\t", "\s", "\r"]}
-              correctAnswer="\n"
+              options={["\\n", "\\t", "\\r", "\\s"]}
+              correctAnswer="\\n"
               onAnswer={handleAnswer}
             />
 
@@ -148,27 +151,101 @@ print("aaa \\t bbb")`}
               onAnswer={handleAnswer}
             />
 
+            <QuizQuestion
+              question="Какой индекс у первого символа в строке Python?"
+              options={["0", "1", "-1", "Нет индекса"]}
+              correctAnswer="0"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Как получить длину строки в Python?"
+              options={["len()", "length()", "size()", "count()"]}
+              correctAnswer="len()"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Какой символ используется для табуляции в строке?"
+              options={["\\t", "\\n", "\\r", "\\s"]}
+              correctAnswer="\\t"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Как получить последний символ строки 'Python'?"
+              options={["Python[-1]", "Python[5]", "Python[6]", "Python[len]"]}
+              correctAnswer="Python[-1]"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Что делает оператор + со строками?"
+              options={["Складывает", "Объединяет", "Умножает", "Делит"]}
+              correctAnswer="Объединяет"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Как развернуть строку в обратном порядке?"
+              options={["str[::-1]", "str.reverse()", "str[-1:0]", "reverse(str)"]}
+              correctAnswer="str[::-1]"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Какой современный способ форматирования строк в Python?"
+              options={["f-строки", "%-форматирование", ".format()", "template strings"]}
+              correctAnswer="f-строки"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Что выведет print('Hello' * 2)?"
+              options={["HelloHello", "Hello2", "Error", "Hello Hello"]}
+              correctAnswer="HelloHello"
+              onAnswer={handleAnswer}
+            />
+
             <CodeQuestion
-              question="Создайте строковую переменную greeting со значением 'Привет, мир!'"
+              question="Создайте строку greeting со значением 'Привет, мир!'"
               correctAnswer="greeting = 'Привет, мир!'"
               onAnswer={handleAnswer}
             />
 
             <CodeQuestion
-              question="Напишите команду для вывода строки с табуляцией между словами: 'Python    программирование'"
-              correctAnswer='print("Python\tпрограммирование")'
+              question="Напишите код для вывода строки с переносом строки между словами: 'Первая\nВторая'"
+              correctAnswer='print("Первая\\nВторая")'
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте f-строку с переменной name = 'Python': 'Я учу Python!'"
+              correctAnswer='f"Я учу {name}!"'
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Напишите код для получения первых трех символов строки text"
+              correctAnswer="text[:3]"
+              onAnswer={handleAnswer}
+            />
+
+            <CodeQuestion
+              question="Создайте строку spaces с 10 пробелами"
+              correctAnswer='spaces = " " * 10'
               onAnswer={handleAnswer}
             />
           </div>
 
-          {questionsAnswered === 4 && (
+          {questionsAnswered === 15 && (
             <div className="mt-8 p-6 bg-white rounded-lg shadow-sm text-center animate-fade-up">
               <h3 className="text-2xl font-bold mb-4">
-                Ваш результат: {score} из 4
+                Ваш результат: {score} из 15
               </h3>
               <p className="text-gray-600 mb-4">
-                {score === 4 ? "Отлично! Вы отлично разбираетесь в строках!" :
-                 score >= 3 ? "Хороший результат! Продолжайте практиковаться!" :
+                {score === 15 ? "Отлично! Вы отлично разбираетесь в строках!" :
+                 score >= 12 ? "Хороший результат! Продолжайте практиковаться!" :
                  "Попробуйте еще раз после повторения материала!"}
               </p>
               <Button onClick={() => navigate("/topics")} className="mt-4">
