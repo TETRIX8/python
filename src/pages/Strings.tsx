@@ -124,6 +124,63 @@ print("Мое имя %s, мне %d, и мой средний балл %.2f" % (n
 print(f"Привет, {name}! Тебе {old} лет.")`}
             />
           </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Срезы строк
+            </h2>
+            
+            <CodeBlock 
+              code={`myString = "kiberOne"
+print(myString[3:6])    # Символы с 3 по 5: 'erO'
+print(myString[1:9:2])  # Каждый второй символ с 1 по 8: 'ieOe'
+print(myString[::-1])   # Строка в обратном порядке: 'enOrebik'`}
+            />
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Сложные примеры срезов
+            </h2>
+            
+            <CodeBlock 
+              code={`# Пример 1: Нечётные индексы в обратном порядке
+string = "Программирование"
+print(string[1::2][::-1])  # Результат: einnaorP
+
+# Пример 2: Удаление последних символов и дублирование
+string = "PythonDeveloper"
+trimmed = string[:-3]
+print(trimmed * 2)  # Результат: PythonDevePythonDeve
+
+# Пример 3: Форматирование строк
+name = "Иван"
+age = 30
+profession = "программист"
+print(f"Привет, {name}! Тебе {age} лет, и ты {profession}.")`}
+            />
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Практические задания
+            </h2>
+            
+            <CodeBlock 
+              code={`# Задание 1: Анализ строки
+inputString = "Моя строка"
+print(inputString[2])      # Третий символ: 'я'
+print(inputString[-2])     # Предпоследний символ: 'к'
+print(inputString[:5])     # Первые пять символов: 'Моя с'
+
+# Задание 2: Разделение строки
+myString = "Режем строки"
+mid = len(myString) // 2
+firstPart = myString[:mid]
+secondPart = myString[mid:]
+print(secondPart + firstPart)  # Результат: строкиРежем`}
+            />
+          </div>
         </section>
 
         <section className="mt-12 mb-8">
