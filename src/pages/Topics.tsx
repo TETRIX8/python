@@ -13,7 +13,11 @@ const Topics = () => {
             description="Узнайте, как работать с переменными в Python"
             path="/variables"
           />
-          {/* More topics can be added here */}
+          <TopicCard
+            title="Строки"
+            description="Изучите работу со строками в Python"
+            path="/strings"
+          />
         </div>
       </div>
     </div>
