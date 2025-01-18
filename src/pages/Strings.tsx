@@ -16,7 +16,7 @@ const Strings = () => {
 
   useEffect(() => {
     const currentDate = new Date();
-    const accessDate = new Date(2025, 0, 20); // January 20, 2025
+    const accessDate = new Date(2025, 0, 2); // January 20, 2025
 
     if (currentDate >= accessDate) {
       setIsAccessGranted(true);
