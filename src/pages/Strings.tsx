@@ -11,9 +11,17 @@ const Strings = () => {
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isAccessGranted, setIsAccessGranted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const currentDate = new Date();
+    const accessDate = new Date(2025, 0, 20); // January 20, 2025
+
+    if (currentDate >= accessDate) {
+      setIsAccessGranted(true);
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 5000);
@@ -43,11 +51,21 @@ const Strings = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-gray-900">
         <h1 className="text-4xl font-bold text-white animate-fade-in">
-          Строкии
+          Строки
         </h1>
         <div className="w-64">
           <Progress value={progress} className="animate-fade-in" />
         </div>
+      </div>
+    );
+  }
+
+  if (!isAccessGranted) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-gray-900">
+        <h1 className="text-4xl font-bold text-white animate-fade-in">
+          Доступ к контенту откроется 20 января 2025 года
+        </h1>
       </div>
     );
   }
@@ -58,7 +76,6 @@ const Strings = () => {
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-12 animate-fade-up">
           Работа со строками в Python
         </h1>
-
         <section className="prose lg:prose-xl mx-auto">
           <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
             <h2 className="text-2xl font-semibold text-primary mb-4">
