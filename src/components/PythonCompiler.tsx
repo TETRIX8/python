@@ -23,7 +23,7 @@ export const PythonCompiler = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://api.python.org.ru/api/v1/execute', {
+      const response = await fetch('https://api.codex.jaagrav.in/python', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,16 +36,25 @@ export const PythonCompiler = () => {
       const data = await response.json();
       
       if (response.ok) {
-        setOutput(data.output || 'Программа выполнена успешно!');
-        toast({
-          title: "Успех",
-          description: "Код успешно выполнен",
-        });
+        if (data.error) {
+          setOutput(data.error);
+          toast({
+            title: "Ошибка выполнения",
+            description: "В коде обнаружена ошибка",
+            variant: "destructive",
+          });
+        } else {
+          setOutput(data.output || 'Программа выполнена успешно!');
+          toast({
+            title: "Успех",
+            description: "Код успешно выполнен",
+          });
+        }
       } else {
-        setOutput(data.error || 'Произошла ошибка при выполнении кода');
+        setOutput('Произошла ошибка при выполнении кода');
         toast({
           title: "Ошибка выполнения",
-          description: data.error || 'Произошла ошибка при выполнении кода',
+          description: "Произошла ошибка при выполнении кода",
           variant: "destructive",
         });
       }
