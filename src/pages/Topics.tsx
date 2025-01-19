@@ -18,6 +18,11 @@ const Topics = () => {
             description="Изучите работу со строками в Python"
             path="/strings"
           />
+          <TopicCard
+            title="Списки, кортежи, словари"
+            description="Изучите основные структуры данных в Python"
+            path="/data-structures"
+          />
         </div>
       </div>
     </div>
