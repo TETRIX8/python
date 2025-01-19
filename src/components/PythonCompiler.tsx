@@ -23,13 +23,14 @@ export const PythonCompiler = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://api.codex.jaagrav.in/python', {
+      const response = await fetch('https://api.codex.jaagrav.in/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          code: code
+          code: code,
+          language: "py"
         }),
       });
 
