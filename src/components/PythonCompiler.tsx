@@ -23,6 +23,9 @@ export const PythonCompiler = () => {
 
     setIsLoading(true);
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
       const response = await fetch('https://api.codex.jaagrav.in/', {
         method: 'POST',
         headers: {
@@ -30,10 +33,14 @@ export const PythonCompiler = () => {
         },
         body: JSON.stringify({
           code: code,
-          language: "py"
+          language: "py",
+          input: "" // Explicitly setting empty input
         }),
+        signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+      
       const data = await response.json();
       
       if (response.ok) {
@@ -60,12 +67,21 @@ export const PythonCompiler = () => {
         });
       }
     } catch (error) {
-      setOutput('Ошибка при выполнении кода. Пожалуйста, попробуйте позже.');
-      toast({
-        title: "Ошибка",
-        description: "Не удалось выполнить код. Проверьте подключение к интернету.",
-        variant: "destructive",
-      });
+      if (error.name === 'AbortError') {
+        setOutput('Превышено время выполнения кода (10 секунд)');
+        toast({
+          title: "Ошибка",
+          description: "Время выполнения кода превышено",
+          variant: "destructive",
+        });
+      } else {
+        setOutput('Ошибка при выполнении кода. Пожалуйста, попробуйте позже.');
+        toast({
+          title: "Ошибка",
+          description: "Не удалось выполнить код. Проверьте подключение к интернету.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -75,6 +91,12 @@ export const PythonCompiler = () => {
     <div className="w-full max-w-4xl mx-auto p-4 space-y-4 animate-fade-up">
       <Card className="p-4">
         <h2 className="text-2xl font-bold mb-4">Python Компилятор</h2>
+        <div className="mb-4">
+          <p className="text-sm text-gray-600">
+            Примечание: Компилятор не поддерживает функции ввода (input()). 
+            Пожалуйста, используйте предопределенные значения в вашем коде.
+          </p>
+        </div>
         <Textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
