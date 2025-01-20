@@ -72,8 +72,8 @@ const Conditions = () => {
               Основные условные операторы:
             </h3>
             <p className="text-gray-700 mb-4">
-            1. if (если)
-
+            1. if (если)  </p>
+ <p className="text-gray-700 mb-4">
             Оператор if выполняет код, только если условие истинно (True).            </p>
 
             <CodeBlock
