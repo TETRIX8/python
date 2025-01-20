@@ -186,6 +186,41 @@ print(user)`}
               onAnswer={handleAnswer}
             />
 
+            <QuizQuestion
+              question="Какой метод используется для сортировки списка?"
+              options={["sort()", "order()", "arrange()", "organize()"]}
+              correctAnswer="sort()"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Что вернет len([1, 2, 3, 4, 5])?"
+              options={["4", "5", "6", "Ошибку"]}
+              correctAnswer="5"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Как удалить элемент из списка по индексу?"
+              options={["remove()", "del()", "pop()", "delete()"]}
+              correctAnswer="del()"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Что произойдет при попытке доступа к несуществующему ключу словаря?"
+              options={["Вернется None", "Ничего", "KeyError", "ValueError"]}
+              correctAnswer="KeyError"
+              onAnswer={handleAnswer}
+            />
+
+            <QuizQuestion
+              question="Какой метод используется для получения индекса элемента в списке?"
+              options={["find()", "search()", "index()", "position()"]}
+              correctAnswer="index()"
+              onAnswer={handleAnswer}
+            />
+
             <CodeQuestion
               question="Создайте список fruits со значениями 'apple', 'banana', 'orange'"
               correctAnswer="fruits = ['apple', 'banana', 'orange']"
@@ -217,14 +252,14 @@ print(user)`}
             />
           </div>
 
-          {questionsAnswered === 10 && (
+          {questionsAnswered === 15 && (
             <div className="mt-8 p-6 bg-white rounded-lg shadow-sm text-center animate-fade-up">
               <h3 className="text-2xl font-bold mb-4">
-                Ваш результат: {score} из 10
+                Ваш результат: {score} из 15
               </h3>
               <p className="text-gray-600 mb-4">
-                {score === 10 ? "Отлично! Вы отлично разбираетесь в структурах данных Python!" :
-                 score >= 7 ? "Хороший результат! Продолжайте практиковаться!" :
+                {score === 15 ? "Отлично! Вы отлично разбираетесь в структурах данных Python!" :
+                 score >= 12 ? "Хороший результат! Продолжайте практиковаться!" :
                  "Попробуйте еще раз после повторения материала!"}
               </p>
               <Button onClick={() => navigate("/topics")} className="mt-4">
