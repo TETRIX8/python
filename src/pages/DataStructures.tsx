@@ -294,32 +294,38 @@ print(user)`}
             <CodeQuestion
               question="Создайте список fruits со значениями 'apple', 'banana', 'orange'"
               correctAnswer="fruits = ['apple', 'banana', 'orange']"
+              hint="Используйте квадратные скобки [] и перечислите элементы через запятую"
               onAnswer={handleAnswer}
             />
 
             <CodeQuestion
               question="Создайте словарь person с ключами 'name' и 'age' и значениями 'John' и 25"
               correctAnswer="person = {'name': 'John', 'age': 25}"
+              hint="Используйте фигурные скобки {} и укажите пары ключ:значение через запятую"
               onAnswer={handleAnswer}
             />
 
             <CodeQuestion
               question="Создайте кортеж coordinates с значениями 10 и 20"
               correctAnswer="coordinates = (10, 20)"
+              hint="Используйте круглые скобки () и перечислите элементы через запятую"
               onAnswer={handleAnswer}
             />
 
             <CodeQuestion
-              question="Напишите код для удаления элемента с ключом 'age' из словаря person"
-              correctAnswer="del person['age']"
+              question="Напишите код для добавления элемента 'grape' в конец списка fruits"
+              correctAnswer="fruits.append('grape')"
+              hint="Используйте метод append() для добавления элемента в конец списка"
               onAnswer={handleAnswer}
             />
 
             <CodeQuestion
-              question="Напишите код для добавления числа 100 в конец списка numbers"
-              correctAnswer="numbers.append(100)"
+              question="Напишите код для удаления элемента 'banana' из списка fruits"
+              correctAnswer="fruits.remove('banana')"
+              hint="Используйте метод remove() для удаления конкретного элемента из списка"
               onAnswer={handleAnswer}
             />
+
           </div>
 
           {questionsAnswered === 15 && (

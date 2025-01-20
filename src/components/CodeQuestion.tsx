@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { HelpCircle } from "lucide-react";
 
 interface CodeQuestionProps {
   question: string;
   correctAnswer: string;
+  hint?: string;
   onAnswer: (isCorrect: boolean) => void;
 }
 
-export const CodeQuestion = ({ question, correctAnswer, onAnswer }: CodeQuestionProps) => {
+export const CodeQuestion = ({ question, correctAnswer, hint, onAnswer }: CodeQuestionProps) => {
   const [answer, setAnswer] = useState("");
   const [hasAnswered, setHasAnswered] = useState(false);
 
   const normalizeCode = (code: string) => {
-    // Remove all whitespace around = operator and trim the string
     return code.replace(/\s*=\s*/g, '=').trim();
   };
 
@@ -28,7 +30,23 @@ export const CodeQuestion = ({ question, correctAnswer, onAnswer }: CodeQuestion
 
   return (
     <div className="mb-6 p-4 bg-white rounded-lg shadow-sm animate-fade-up">
-      <p className="text-lg font-medium mb-4 text-gray-800">{question}</p>
+      <div className="flex items-start justify-between mb-4">
+        <p className="text-lg font-medium text-gray-800">{question}</p>
+        {hint && (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-6 w-6">
+                  <HelpCircle className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-sm">{hint}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
+      </div>
       <div className="space-y-4">
         <Input
           value={answer}
