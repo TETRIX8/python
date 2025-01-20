@@ -108,6 +108,76 @@ print(numbers)  # Выведет: [10, 2, 4, 5, 6]`}
 
           <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
             <h2 className="text-2xl font-semibold text-primary mb-4">
+              Встроенные методы для работы со списками
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Python предоставляет множество встроенных методов для работы со списками:
+            </p>
+
+            <CodeBlock 
+              code={`# Добавление элемента в конец списка
+numbers = [1, 2, 3]
+numbers.append(4)
+print(numbers)  # Выведет: [1, 2, 3, 4]
+
+# Вставка элемента по индексу
+numbers.insert(1, 5)
+print(numbers)  # Выведет: [1, 5, 2, 3, 4]
+
+# Удаление последнего элемента
+last = numbers.pop()
+print(numbers)  # Выведет: [1, 5, 2, 3]
+
+# Удаление конкретного элемента
+numbers.remove(5)
+print(numbers)  # Выведет: [1, 2, 3]
+
+# Сортировка списка
+numbers.sort()  # Сортировка по возрастанию
+numbers.sort(reverse=True)  # Сортировка по убыванию
+
+# Развернуть список
+numbers.reverse()  # Меняет порядок элементов на противоположный`}
+              description="Основные методы для работы со списками в Python"
+            />
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
+              Полезные функции для работы со структурами данных
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Помимо методов, в Python есть полезные встроенные функции:
+            </p>
+
+            <CodeBlock 
+              code={`# Длина структуры данных
+print(len([1, 2, 3]))  # Выведет: 3
+print(len("Python"))   # Выведет: 6
+print(len({"a": 1, "b": 2}))  # Выведет: 2
+
+# Минимальное и максимальное значение
+numbers = [1, 5, 2, 8, 3]
+print(min(numbers))  # Выведет: 1
+print(max(numbers))  # Выведет: 8
+
+# Сумма числовых элементов
+print(sum(numbers))  # Выведет: 19
+
+# Преобразование в список
+tuple_example = (1, 2, 3)
+list_from_tuple = list(tuple_example)
+print(list_from_tuple)  # Выведет: [1, 2, 3]
+
+# Подсчет количества элементов
+numbers = [1, 2, 2, 3, 2, 4]
+print(numbers.count(2))  # Выведет: 3`}
+              description="Встроенные функции Python для работы со структурами данных"
+            />
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-sm mb-8 animate-fade-up">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
               Работа с кортежами
             </h2>
             <p className="text-gray-700 mb-4">
