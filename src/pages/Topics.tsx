@@ -23,6 +23,11 @@ const Topics = () => {
             description="Изучите основные структуры данных в Python"
             path="/data-structures"
           />
+          <TopicCard
+            title="Условия и условные операторы"
+            description="Изучите работу с условными операторами в Python"
+            path="/conditions"
+          />
         </div>
       </div>
     </div>
