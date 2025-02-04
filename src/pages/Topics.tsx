@@ -9,6 +9,11 @@ const Topics = () => {
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <TopicCard
+            title="Математические операторы"
+            description="Изучите основные математические операции в Python"
+            path="/math-operators"
+          />
+          <TopicCard
             title="Переменные"
             description="Узнайте, как работать с переменными в Python"
             path="/variables"

@@ -8,6 +8,7 @@ import Variables from "./pages/Variables";
 import Strings from "./pages/Strings";
 import DataStructures from "./pages/DataStructures";
 import Conditions from "./pages/Conditions";
+import MathOperators from "./pages/MathOperators";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/strings" element={<Strings />} />
           <Route path="/data-structures" element={<DataStructures />} />
           <Route path="/conditions" element={<Conditions />} />
+          <Route path="/math-operators" element={<MathOperators />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
