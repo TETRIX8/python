@@ -8,7 +8,6 @@ import Variables from "./pages/Variables";
 import Strings from "./pages/Strings";
 import DataStructures from "./pages/DataStructures";
 import Conditions from "./pages/Conditions";
-import { AiAssistant } from "./components/AiAssistant";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +26,6 @@ const App = () => (
           <Route path="/conditions" element={<Conditions />} />
         </Routes>
       </BrowserRouter>
-      <AiAssistant />
     </TooltipProvider>
   </QueryClientProvider>
 );
