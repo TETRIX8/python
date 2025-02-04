@@ -30,10 +30,10 @@ export const AiAssistant = () => {
     try {
       const result = await getGeminiResponse(prompt);
       setResponse(result);
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Ошибка",
-        description: "Не удалось получить ответ от AI",
+        description: error.message || "Не удалось получить ответ от AI",
         variant: "destructive",
       });
     } finally {
