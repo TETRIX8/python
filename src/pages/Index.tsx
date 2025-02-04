@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { GeminiResponse } from "@/components/GeminiResponse";
-import { getGeminiResponse } from "@/utils/gemini";
+import { getGeminiResponse } from "@/utils/api";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
