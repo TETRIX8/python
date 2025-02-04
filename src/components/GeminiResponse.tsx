@@ -8,6 +8,13 @@ interface GeminiResponseProps {
   content: string;
 }
 
+interface CodeProps {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
+
 export const GeminiResponse = ({ content }: GeminiResponseProps) => {
   return (
     <Card className="p-6 my-4 bg-white shadow-sm">
@@ -17,7 +24,7 @@ export const GeminiResponse = ({ content }: GeminiResponseProps) => {
           h2: ({ children }) => <h2 className="text-2xl font-bold mb-3">{children}</h2>,
           h3: ({ children }) => <h3 className="text-xl font-bold mb-2">{children}</h3>,
           p: ({ children }) => <p className="mb-4 text-gray-700">{children}</p>,
-          code: ({ node, inline, className, children, ...props }) => {
+          code: ({ node, inline, className, children, ...props }: CodeProps) => {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
               <SyntaxHighlighter
