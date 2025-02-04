@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Card } from './ui/card';
 import { Input } from './ui/input';
 import { GeminiResponse } from './GeminiResponse';
-import { getGeminiResponse } from '@/utils/gemini';
+import { getGeminiResponse } from '@/utils/api';
 import { useToast } from './ui/use-toast';
 import { Loader2 } from 'lucide-react';
 
