@@ -1,3 +1,4 @@
+
 import { TopicCard } from "@/components/TopicCard";
 
 const Topics = () => {
@@ -12,6 +13,11 @@ const Topics = () => {
             title="Математические операторы"
             description="Изучите основные математические операции в Python"
             path="/math-operators"
+          />
+          <TopicCard
+            title="Циклы while и for"
+            description="Изучите работу с циклами в Python"
+            path="/loops"
           />
           <TopicCard
             title="Переменные"

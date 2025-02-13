@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +10,7 @@ import Strings from "./pages/Strings";
 import DataStructures from "./pages/DataStructures";
 import Conditions from "./pages/Conditions";
 import MathOperators from "./pages/MathOperators";
+import Loops from "./pages/Loops";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,7 @@ const App = () => (
           <Route path="/data-structures" element={<DataStructures />} />
           <Route path="/conditions" element={<Conditions />} />
           <Route path="/math-operators" element={<MathOperators />} />
+          <Route path="/loops" element={<Loops />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
