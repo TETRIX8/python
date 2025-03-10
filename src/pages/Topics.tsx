@@ -49,6 +49,11 @@ const Topics = () => {
             description="Изучите создание и использование функций в Python"
             path="/functions"
           />
+          <TopicCard
+            title="Консольная игра &quot;Крестики-нолики&quot;"
+            description="Создайте консольную игру Крестики-нолики в Python"
+            path="/tic-tac-toe"
+          />
         </div>
       </div>
     </div>
