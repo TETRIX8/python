@@ -17,10 +17,8 @@ const PyTurtle = () => {
         if (prevProgress >= 100) {
           clearInterval(interval);
           setTimeout(() => {
-            // Redirect to Google Colab after loading is complete
-            window.open("https://colab.research.google.com/drive/1r6BkwiwuYVSOO63eVxg8l4FKdduHYtqS?usp=sharing#scrollTo=tcO3cFG9b4KK", "_blank");
-            toast.success("Открыт Google Colab с PyTurtle");
             setLoading(false);
+            toast.success("Загружен Google Colab с PyTurtle");
           }, 500);
           return 100;
         }
@@ -49,7 +47,7 @@ const PyTurtle = () => {
           Рисование с помощью PyTurtle
         </h1>
 
-        <div className="max-w-4xl mx-auto space-y-8 animate-fade-up">
+        <div className="max-w-6xl mx-auto space-y-8 animate-fade-up">
           {loading ? (
             <div className="flex flex-col items-center justify-center p-12 bg-white rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold mb-6">Подготовка среды разработки...</h2>
@@ -58,21 +56,23 @@ const PyTurtle = () => {
                 <p className="text-right mt-2 text-sm text-gray-500">{progress}%</p>
               </div>
               <p className="text-center text-gray-600 animate-pulse">
-                Вы будете перенаправлены в Google Colab для интерактивной работы с PyTurtle
+                Загружается интерактивная среда Google Colab для работы с PyTurtle
               </p>
             </div>
           ) : (
-            <div className="p-8 bg-white rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-4">Среда разработки готова</h2>
-              <p className="mb-6">
-                Вы были перенаправлены в Google Colab, где можете интерактивно работать с PyTurtle. Если страница не открылась автоматически, нажмите на кнопку ниже:
-              </p>
-              <Button 
-                onClick={() => window.open("https://colab.research.google.com/drive/1r6BkwiwuYVSOO63eVxg8l4FKdduHYtqS?usp=sharing#scrollTo=tcO3cFG9b4KK", "_blank")}
-                className="mt-2"
-              >
-                Открыть Google Colab
-              </Button>
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div className="p-4 border-b">
+                <h2 className="text-xl font-semibold">Google Colab с PyTurtle</h2>
+              </div>
+              <div className="w-full aspect-[16/9]">
+                <iframe 
+                  src="https://colab.research.google.com/drive/1r6BkwiwuYVSOO63eVxg8l4FKdduHYtqS?usp=sharing#scrollTo=tcO3cFG9b4KK" 
+                  className="w-full h-full border-0"
+                  title="Google Colab с PyTurtle"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
           )}
         </div>
