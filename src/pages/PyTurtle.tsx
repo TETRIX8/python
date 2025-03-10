@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -449,9 +448,9 @@ for i in range(0,edges):
             
             <CodeQuestion
               question="Напишите код, который рисует квадрат со стороной 50 пикселей:"
-              correctAnswer={`for i in range(0,4):
+              correctAnswer="for i in range(0,4):
   forward(50)
-  left(90)`}
+  left(90)"
               hint="Используйте цикл, где i меняется от 0 до 3 включительно, и команды forward() и left()"
               onAnswer={handleCodeAnswer}
             />
@@ -479,9 +478,9 @@ for i in range(0,edges):
             
             <CodeQuestion
               question="Напишите код для рисования треугольника с равными сторонами:"
-              correctAnswer={`for i in range(0,3):
+              correctAnswer="for i in range(0,3):
   forward(100)
-  left(120)`}
+  left(120)"
               hint="Используйте цикл и поворот на 120 градусов"
               onAnswer={handleCodeAnswer}
             />
