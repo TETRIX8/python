@@ -11,6 +11,7 @@ import DataStructures from "./pages/DataStructures";
 import Conditions from "./pages/Conditions";
 import MathOperators from "./pages/MathOperators";
 import Loops from "./pages/Loops";
+import PyTurtle from "./pages/PyTurtle";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/conditions" element={<Conditions />} />
           <Route path="/math-operators" element={<MathOperators />} />
           <Route path="/loops" element={<Loops />} />
+          <Route path="/pyturtle" element={<PyTurtle />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

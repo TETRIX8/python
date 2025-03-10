@@ -39,6 +39,11 @@ const Topics = () => {
             description="Изучите работу с условными операторами в Python"
             path="/conditions"
           />
+          <TopicCard
+            title="Рисование с PyTurtle"
+            description="Изучите основы рисования с помощью черепашки в Python"
+            path="/pyturtle"
+          />
         </div>
       </div>
     </div>
