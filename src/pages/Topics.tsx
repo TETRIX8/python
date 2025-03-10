@@ -44,6 +44,11 @@ const Topics = () => {
             description="Научитесь создавать графику с помощью модуля PyTurtle"
             path="/pyturtle"
           />
+          <TopicCard
+            title="Функции"
+            description="Изучите создание и использование функций в Python"
+            path="/functions"
+          />
         </div>
       </div>
     </div>
