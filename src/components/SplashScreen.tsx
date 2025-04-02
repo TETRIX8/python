@@ -13,10 +13,10 @@ const SplashScreen = () => {
       setOpacity(1);
     }, 300);
 
-    // Start fade out animation after 4.5 seconds
+    // Start fade out animation after 9.5 seconds (to complete at around 10 seconds)
     const fadeOutTimer = setTimeout(() => {
       setOpacity(0);
-    }, 4500);
+    }, 9500);
 
     return () => clearTimeout(fadeOutTimer);
   }, []);
@@ -106,7 +106,7 @@ const SplashScreen = () => {
     // Animation loop
     let frameId: number;
     let zoomComplete = false;
-    const zoomDuration = 3; // seconds
+    const zoomDuration = 4; // Extended zoom duration for a 10-second splash screen
     const startTime = Date.now();
 
     const animate = () => {
