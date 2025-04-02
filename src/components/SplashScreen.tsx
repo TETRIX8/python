@@ -45,46 +45,60 @@ const SplashScreen = () => {
     renderer.setClearColor(0x000000, 0);
     canvasRef.current.appendChild(renderer.domElement);
 
-    // Create the globe
+    // Create the realistic globe
     const sphereGeometry = new THREE.SphereGeometry(2, 64, 64);
     
-    // Create earth texture with python-themed colors
+    // Load Earth texture map
     const textureLoader = new THREE.TextureLoader();
+    const earthMap = textureLoader.load('https://unpkg.com/three-globe@2.24.13/example/img/earth-blue-marble.jpg');
+    const bumpMap = textureLoader.load('https://unpkg.com/three-globe@2.24.13/example/img/earth-topology.png');
+    const specularMap = textureLoader.load('https://unpkg.com/three-globe@2.24.13/example/img/earth-water.png');
     
-    // Create a material with python-themed colors
+    // Create material with realistic Earth textures
     const material = new THREE.MeshPhongMaterial({
-      color: 0x306998, // Python blue
-      emissive: 0x111111,
-      specular: 0x333333,
-      shininess: 25,
-      transparent: true,
-      opacity: 0.9
+      map: earthMap,
+      bumpMap: bumpMap,
+      bumpScale: 0.05,
+      specularMap: specularMap,
+      specular: new THREE.Color(0x333333),
+      shininess: 15,
     });
 
     const globe = new THREE.Mesh(sphereGeometry, material);
     scene.add(globe);
 
-    // Add highlight for Python yellow
-    const highlightGeometry = new THREE.SphereGeometry(2.05, 32, 32);
-    const highlightMaterial = new THREE.MeshBasicMaterial({
-      color: 0xFFD43B, // Python yellow
+    // Add glow effect / atmosphere
+    const atmosphereGeometry = new THREE.SphereGeometry(2.05, 50, 50);
+    const atmosphereMaterial = new THREE.MeshPhongMaterial({
+      color: 0x3366ff,
       transparent: true,
-      opacity: 0.2,
+      opacity: 0.15,
       side: THREE.BackSide
     });
-    const highlight = new THREE.Mesh(highlightGeometry, highlightMaterial);
-    scene.add(highlight);
+    const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+    scene.add(atmosphere);
 
-    // Add ambient light
+    // Add clouds layer (optional)
+    const cloudGeometry = new THREE.SphereGeometry(2.03, 50, 50);
+    const cloudTexture = textureLoader.load('https://unpkg.com/three-globe@2.24.13/example/img/earth-clouds.png');
+    const cloudMaterial = new THREE.MeshPhongMaterial({
+      map: cloudTexture,
+      transparent: true,
+      opacity: 0.4,
+    });
+    const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+    scene.add(clouds);
+
+    // Add ambient light for general illumination
     const ambientLight = new THREE.AmbientLight(0x404040, 1);
     scene.add(ambientLight);
 
-    // Add directional light
+    // Add directional light (sun)
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
 
-    // Add another directional light from the opposite side
+    // Add another directional light from the opposite side for better visibility
     const backLight = new THREE.DirectionalLight(0xffffff, 0.5);
     backLight.position.set(-5, -3, -5);
     scene.add(backLight);
@@ -98,9 +112,10 @@ const SplashScreen = () => {
     const animate = () => {
       frameId = requestAnimationFrame(animate);
 
-      // Rotate the globe
-      globe.rotation.y += 0.005;
-      highlight.rotation.y += 0.003;
+      // Rotate the globe and clouds
+      globe.rotation.y += 0.0005;
+      clouds.rotation.y += 0.0007; // clouds rotate slightly faster for effect
+      atmosphere.rotation.y += 0.0005;
 
       // Create zooming effect
       const elapsed = (Date.now() - startTime) / 1000; // seconds
